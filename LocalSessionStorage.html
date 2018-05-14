@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript web storage count</title>
+</head>
+<body onload="updateVisitInfo(), alertVisitInfo(), displayLocalStorage(),updateSessionInfo(), alertSessionInfo(), displaySessionInfo() ">
+<div id="local">
+	<h3> Using Local storage: </h3>	
+</div>
+<br>
+<br>
+<div id="session">
+	<h3>Using Session storage: </h3>
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+	function updateVisitInfo() {
+    localStorage.lastVisit = new Date();
+    localStorage.numVisits = parseInt(localStorage.numVisits || 0) + 1;
+	}
+
+	function alertVisitInfo() {
+	    alert("You've visited this page: " + (localStorage.numVisits || 0) + " times." +
+	        "Last visited: " + (localStorage.lastVisit || "never") + ".");
+	}
+
+	function displayLocalStorage(){
+		console.log(localStorage.numVisits);
+		document.getElementById('local').innerHTML += 'You visited the website '+localStorage.numVisits+' time(s)';
+	}
+
+	function updateSessionInfo(){
+		sessionStorage.lastVisit = new Date();
+    	sessionStorage.numVisits = parseInt(sessionStorage.numVisits || 0) + 1;
+	}
+
+	function alertSessionInfo(){
+		alert("You've visited this page: " + (sessionStorage.numVisits || 0) + " times." +
+	        "Last visited: " + (sessionStorage.lastVisit || "never") + ".");
+	}
+
+	function displaySessionInfo(){
+		console.log(sessionStorage.numVisits);
+		document.getElementById('session').innerHTML += 'You visited the website '+sessionStorage.numVisits+' time(s)';
+	}
+
+
+	// Save data to sessionStorage
+	//sessionStorage.setItem('key', 'value');
+
+	// Get saved data from sessionStorage
+	// var data = sessionStorage.getItem('key');
+	// document.getElementById('session').innerHTML += 'Key is '+ data;
+
+	// Remove saved data from sessionStorage
+	//sessionStorage.removeItem('key');
+
+	// Remove all saved data from sessionStorage
+	//sessionStorage.clear();
+</script>
